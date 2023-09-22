@@ -1,0 +1,23 @@
+from nltk.translate.bleu_score import sentence_bleu  
+  
+def calculate_bleu(reference, translation):  
+    """  
+    计算BLEU分数。  
+    :param reference: 参考翻译（一个字符串列表）  
+    :param translation: 机器翻译（一个字符串）  
+    :return: BLEU分数  
+    """  
+    # 将参考翻译和机器翻译分割成单词列表  
+    reference = reference.split()  
+    translation = translation.split()  
+      
+    # 计算BLEU分数  
+    bleu = sentence_bleu([reference], translation)  
+      
+    return bleu  
+  
+# 示例用法  
+reference = "这是一个例子。"  
+translation = "这是一个示例。"  
+bleu_score = calculate_bleu(reference, translation)  
+print(f"BLEU分数: {bleu_score}")
